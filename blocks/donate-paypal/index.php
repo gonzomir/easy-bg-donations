@@ -64,9 +64,17 @@ function register_block() {
  */
 function render_block( $attributes ) {
 
+	wp_enqueue_script(
+		'ebd-paypal',
+		plugins_url( '../assets/js/paypal.js', __DIR__ ),
+		[],
+		filemtime( plugin_dir_path( __DIR__ ) . '../assets/js/paypal.js' )
+	);
+
 	$args = [
 		'business' => get_option( 'ebd_paypal_business' ),
-		'bn' => get_option( 'ebd_paypal_bn' ),
+		'donate_bn' => get_option( 'ebd_paypal_donate_bn' ),
+		'subscribe_bn' => get_option( 'ebd_paypal_subscribe_bn' ),
 		'item_name' => get_option( 'ebd_paypal_item_name' ),
 		'return_url' => get_option( 'ebd_paypal_return_url' ),
 	];

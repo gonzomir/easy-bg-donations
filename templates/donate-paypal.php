@@ -1,6 +1,6 @@
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donations" id="donation-form-paypal">
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donations" id="donation-form-paypal" data-donate-bn="<?php echo esc_attr( $args['donate_bn'] ); ?>" data-subscribe-bn="<?php echo esc_attr( $args['subscribe_bn'] ); ?>">
   <input name="charset" value="utf-8" type="hidden">
-  <input name="bn" value="<?php echo esc_attr( $args['bn'] ); ?>" type="hidden">
+  <input name="bn" value="<?php echo esc_attr( $args['donate_bn'] ); ?>" type="hidden">
   <input name="business" value="<?php echo esc_attr( $args['business'] ); ?>" type="hidden">
   <input name="return" value="<?php echo esc_url( $args['return_url'] ); ?>" type="hidden">
   <input name="item_name" value="<?php echo esc_attr( $args['item_name'] ); ?>" type="hidden">

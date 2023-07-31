@@ -50,25 +50,51 @@ function register_settings() {
 	);
 
 	add_settings_field(
-		'ebd_paypal_bn',
-		__( 'PayPal Button Identifier', 'ebd' ),
+		'ebd_paypal_donate_bn',
+		__( 'PayPal Donate Button Identifier', 'ebd' ),
 		function() {
 			printf(
 				'<input name="%1$s" id="%1$s" value="%2$s" class="regular-text" type="text">',
-				esc_attr( 'ebd_paypal_bn' ),
-				esc_attr( get_option( 'ebd_paypal_bn' ) )
+				esc_attr( 'ebd_paypal_donate_bn' ),
+				esc_attr( get_option( 'ebd_paypal_donate_bn' ) )
 			);
 		},
 		'ebd',
 		'ebd_paypal',
 		[
-			'label_for' => 'ebd_paypal_bn',
+			'label_for' => 'ebd_paypal_donate_bn',
 		]
 	);
 
 	register_setting(
 		'ebd',
-		'ebd_paypal_bn',
+		'ebd_paypal_donate_bn',
+		[
+			'sanitize_callback' => 'sanitize_text_field',
+			'type'              => 'string',
+		]
+	);
+
+	add_settings_field(
+		'ebd_paypal_subscribe_bn',
+		__( 'PayPal Subscribe Button Identifier', 'ebd' ),
+		function() {
+			printf(
+				'<input name="%1$s" id="%1$s" value="%2$s" class="regular-text" type="text">',
+				esc_attr( 'ebd_paypal_subscribe_bn' ),
+				esc_attr( get_option( 'ebd_paypal_subscribe_bn' ) )
+			);
+		},
+		'ebd',
+		'ebd_paypal',
+		[
+			'label_for' => 'ebd_paypal_subscribe_bn',
+		]
+	);
+
+	register_setting(
+		'ebd',
+		'ebd_paypal_subscribe_bn',
 		[
 			'sanitize_callback' => 'sanitize_text_field',
 			'type'              => 'string',
