@@ -11,6 +11,9 @@
 namespace Gonzo\Easy_BG_Donations;
 
 require __DIR__ . '/inc/namespace.php';
+require __DIR__ . '/inc/settings.php';
+
 require __DIR__ . '/blocks/namespace.php';
 
 bootstrap();
+Settings\bootstrap();
