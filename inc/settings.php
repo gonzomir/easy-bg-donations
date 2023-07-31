@@ -163,6 +163,32 @@ function register_settings() {
 	);
 
 	add_settings_field(
+		'ebd_epay_item_name',
+		__( 'Item name', 'ebd' ),
+		function() {
+			printf(
+				'<input name="%1$s" id="%1$s" value="%2$s" class="regular-text" type="text">',
+				esc_attr( 'ebd_epay_item_name' ),
+				esc_attr( get_option( 'ebd_epay_item_name' ) )
+			);
+		},
+		'ebd',
+		'ebd_epay',
+		[
+			'label_for' => 'ebd_epay_item_name',
+		]
+	);
+
+	register_setting(
+		'ebd',
+		'ebd_epay_item_name',
+		[
+			'sanitize_callback' => 'sanitize_text_field',
+			'type'              => 'string',
+		]
+	);
+
+	add_settings_field(
 		'ebd_epay_ok_url',
 		__( 'OK Return URL', 'ebd' ),
 		function() {

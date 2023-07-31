@@ -64,8 +64,19 @@ function register_block() {
  */
 function render_block( $attributes ) {
 
+	$args = [
+		'min' => get_option( 'ebd_epay_min' ),
+		'item_name' => get_option( 'ebd_epay_item_name' ),
+		'ok_url' => get_option( 'ebd_epay_ok_url' ),
+		'error_url' => get_option( 'ebd_epay_error_url' ),
+	];
+
 	ob_start();
-	get_template_part( 'donate', 'epay' );
+	if ( locate_template( 'template-parts/donate-epay.php' ) ) {
+		get_template_part( 'donate', 'epay', $args );
+	} else {
+		require( dirname( dirname( __DIR__ ) ) . '/templates/donate-epay.php' );
+	}
 	$block_content = ob_get_contents();
 	ob_end_clean();
 

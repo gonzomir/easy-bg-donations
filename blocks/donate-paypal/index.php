@@ -64,8 +64,19 @@ function register_block() {
  */
 function render_block( $attributes ) {
 
+	$args = [
+		'business' => get_option( 'ebd_paypal_business' ),
+		'bn' => get_option( 'ebd_paypal_bn' ),
+		'item_name' => get_option( 'ebd_paypal_item_name' ),
+		'return_url' => get_option( 'ebd_paypal_return_url' ),
+	];
+
 	ob_start();
-	get_template_part( 'donate', 'paypal' );
+	if ( locate_template( 'template-parts/donate-paypal.php' ) ) {
+		get_template_part( 'donate', 'paypal', $args );
+	} else {
+		require( dirname( dirname( __DIR__ ) ) . '/templates/donate-paypal.php' );
+	}
 	$block_content = ob_get_contents();
 	ob_end_clean();
 
