@@ -1,11 +1,15 @@
 <?php
 /**
- * Plugin Name: Easy BG Donation
+ * Plugin Name: Easy BG Donations
+ * Plugin URI: https://github.com/gonzomir/easy-bg-donations
  * Description: Accept donations with payment gateways, popular in Bulgaria.
- * Version: 1.0
+ * Version: 0.1
  * Author: Milen Petrinski - Gonzo
  * Author URI: https://greatgonzo.net
- * License: GPLv2 or later
+ * License: GPLv3 or later
+ * License URI: https://www.gnu.org/licenses/gpl.html
+ * Text Domain: ebd
+ * Domain Path: /languages
  */
 
 namespace Gonzo\Easy_BG_Donations;
