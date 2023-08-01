@@ -35,7 +35,7 @@ function editor_assets() {
 	wp_enqueue_script(
 		'ebd-donate-epay-block-editor', // Handle.
 		plugins_url( 'block.js', __FILE__ ), // Block.js: We register the block here.
-		array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-server-side-render' ), // Dependencies, defined above.
+		[ 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-server-side-render' ], // Dependencies, defined above.
 		filemtime( plugin_dir_path( __FILE__ ) . 'block.js' ) // filemtime — Gets file modification time.
 	);
 	wp_set_script_translations( 'ebd-donate-epay-block-editor', 'ebd', plugin_dir_path( __FILE__ ) . '../../../languages/' );
@@ -49,9 +49,9 @@ function editor_assets() {
 function register_block() {
 	register_block_type(
 		'ebd/donate-epay',
-		array(
+		[
 			'render_callback' => __NAMESPACE__ . '\\render_block',
-		)
+		]
 	);
 }
 
@@ -75,7 +75,7 @@ function render_block( $attributes ) {
 	if ( locate_template( 'template-parts/donate-epay.php' ) ) {
 		get_template_part( 'donate', 'epay', $args );
 	} else {
-		require( dirname( dirname( __DIR__ ) ) . '/templates/donate-epay.php' );
+		require dirname( dirname( __DIR__ ) ) . '/templates/donate-epay.php';
 	}
 	$block_content = ob_get_contents();
 	ob_end_clean();

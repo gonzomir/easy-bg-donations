@@ -12,6 +12,11 @@ function bootstrap() {
 	add_action( 'admin_menu', __NAMESPACE__ . '\\admin_menu' );
 }
 
+/**
+ * Register settings sections and fields.
+ *
+ * @return void
+ */
 function register_settings() {
 
 	add_settings_section(
@@ -267,6 +272,11 @@ function register_settings() {
 	);
 }
 
+/**
+ * Add menu item for settings page under main Settings menu item in admin.
+ *
+ * @return void
+ */
 function admin_menu() {
 	add_submenu_page(
 		'options-general.php',
@@ -278,6 +288,11 @@ function admin_menu() {
 	);
 }
 
+/**
+ * Render settings page.
+ *
+ * @return void
+ */
 function render_settings_page() {
 	// Check user capabilities.
 	if ( ! current_user_can( 'manage_options' ) ) {
@@ -293,7 +308,7 @@ function render_settings_page() {
 		<h1><?php echo esc_html( get_admin_page_title() ); ?></h1>
 		<form action="options.php" method="post">
 			<?php
-			// Output security fields for the registered setting "minimal-share-buttons".
+			// Output security fields for the registered settings.
 			settings_fields( 'ebd' );
 			// Output setting sections and their fields.
 			// Sections are registered for "ebd", each field is registered to a specific section.
