@@ -1,12 +1,12 @@
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" class="donations" id="donation-form-paypal" data-donate-bn="<?php echo esc_attr( $args['donate_bn'] ); ?>" data-subscribe-bn="<?php echo esc_attr( $args['subscribe_bn'] ); ?>">
+<form action="https://www.paypal.com/donate" method="post" class="donations" id="donation-form-paypal">
 	<input name="charset" value="utf-8" type="hidden">
-	<input name="bn" value="<?php echo esc_attr( $args['donate_bn'] ); ?>" type="hidden">
 	<input name="business" value="<?php echo esc_attr( $args['business'] ); ?>" type="hidden">
+	<input name="no_recurring" value="1" type="hidden">
+	<input name="no_note" value="1" type="hidden">
+	<input name="no_shipping" value="1" type="hidden">
 	<input name="return" value="<?php echo esc_url( $args['return_url'] ); ?>" type="hidden">
 	<input name="item_name" value="<?php echo esc_attr( $args['item_name'] ); ?>" type="hidden">
-	<input name="rm" value="0" type="hidden">
 	<input name="currency_code" value="EUR" type="hidden">
-	<input name="no_shipping" value="1" type="hidden">
 
 	<input type="hidden" name="a3" value="0.98" disabled="disabled" />
 	<input type="hidden" name="t3" value="M" disabled="disabled" />
@@ -16,7 +16,7 @@
 		<legend><?php esc_html_e( 'Choose donation type', 'ebd' ); ?></legend>
 			<p role="radiogroup">
 				<input type="radio" name="cmd" value="_donations" id="cmd-donation" required checked /><label for="cmd-donation"><?php esc_html_e( 'Single donation', 'ebd' ); ?></label>
-				<input type="radio" name="cmd" value="_xclick-subscriptions" id="cmd-subscription" /><label for="cmd-subscription"><?php esc_html_e( 'Recurring donation', 'ebd' ); ?></label>
+				<input type="radio" name="cmd" value="_xclick-subscriptions" id="cmd-subscription" formaction="https://www.paypal.com/cgi-bin/webscr" /><label for="cmd-subscription"><?php esc_html_e( 'Recurring donation', 'ebd' ); ?></label>
 			</p>
 			<p role="radiogroup">
 				<input type="radio" name="p3" value="3" id="p3-3" required /><label for="p3-3"><?php esc_html_e( 'Every three months', 'ebd' ); ?></label>

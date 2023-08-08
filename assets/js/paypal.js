@@ -20,8 +20,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			return;
 		}
 
-		input_bn.value = donation_form.dataset.subscribeBn;
-
 		input_a3.disabled = false;
 		input_t3.disabled = false;
 		input_src.disabled = false;
@@ -36,8 +34,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		if ( ! this.checked ) {
 			return;
 		}
-
-		input_bn.value = donation_form.dataset.donateBn;
 
 		input_a3.disabled = true;
 		input_t3.disabled = true;
